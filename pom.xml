@@ -13,6 +13,7 @@
 		<scala.version>2.11.7</scala.version>
 		<scala.version.tools>2.11</scala.version.tools>
 		<slick.version>3.1.0</slick.version>
+		<mysql.port>3306</mysql.port>
 	</properties>
 
 	<build>
@@ -45,9 +46,6 @@
 							<goal>compile</goal>
 							<goal>testCompile</goal>
 						</goals>
-						<configuration>
-							<mainSourceDir>${project.build.sourceDirectory}/../java</mainSourceDir>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -76,7 +74,7 @@
 							<name>mysql:5.7.9</name>
 							<run>
 								<ports>
-									<port>3306:3306</port>
+									<port>${mysql.port}:3306</port>
 								</ports>
 							</run>
 						</image>
