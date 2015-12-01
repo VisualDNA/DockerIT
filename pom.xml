@@ -13,10 +13,29 @@
 		<scala.version>2.11.7</scala.version>
 		<scala.version.tools>2.11</scala.version.tools>
 		<slick.version>3.1.0</slick.version>
+		<test.mysql.port>3306</test.mysql.port>
+		<test.mysql.root.password>admin</test.mysql.root.password>
+		<test.mysql.root.username>root</test.mysql.root.username>
 	</properties>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+
+			<resource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
 			<plugin>
 				<groupId>net.alchim31.maven</groupId>
 				<artifactId>scala-maven-plugin</artifactId>
@@ -29,9 +48,6 @@
 							<goal>compile</goal>
 							<goal>testCompile</goal>
 						</goals>
-						<configuration>
-							<mainSourceDir>${project.build.sourceDirectory}/../java</mainSourceDir>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -59,25 +75,28 @@
 						<image>
 							<name>mysql:5.7.9</name>
 							<run>
+								<env>
+									<MYSQL_ROOT_PASSWORD>${test.mysql.root.password}</MYSQL_ROOT_PASSWORD>
+								</env>
 								<ports>
-									<port>3306:3306</port>
+									<port>${test.mysql.port}:3306</port>
 								</ports>
+								<wait>
+									<exec>
+										<!--<postStart>mysql -u${test.mysql.root.username} -p${test.mysql.root.password} -e "CREATE DATABASE test"</postStart>-->
+										<postStart>mysql -h localhost -p3306 -u${test.mysql.root.username} -p${test.mysql.root.password} -e "SELECT 1"</postStart>
+									</exec>
+								</wait>
+								<!--<volumes>/${project.build.directory}:/tmp/import:ro</volumes>-->
 							</run>
 						</image>
 					</images>
 				</configuration>
-
-				<!-- Connect start/stop to pre- and
-                     post-integration-test phase, respectively if you want to start
-                     your docker containers during integration tests -->
 				<executions>
 					<execution>
 						<id>start</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<!-- "build" should be used to create the images with the
-                                 artefacts -->
-							<!--<goal>build</goal>-->
 							<goal>start</goal>
 						</goals>
 					</execution>
