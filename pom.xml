@@ -50,10 +50,19 @@
 				<version>0.13.6</version>
 
 				<configuration>
+					<dockerHost>${env.DOCKER_HOST}</dockerHost>
+					<certPath>${env.DOCKER_CERT_PATH}</certPath>
+					<useColor>true</useColor>
+					<verbose>true</verbose>
 					<images>
 						<!-- A single's image configuration -->
 						<image>
-							mysql
+							<name>mysql:5.7.9</name>
+							<run>
+								<ports>
+									<port>3306:3306</port>
+								</ports>
+							</run>
 						</image>
 					</images>
 				</configuration>
