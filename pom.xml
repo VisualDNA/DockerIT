@@ -81,6 +81,13 @@
 								<ports>
 									<port>${test.mysql.port}:3306</port>
 								</ports>
+								<wait>
+									<exec>
+										<!--<postStart>mysql -u${test.mysql.root.username} -p${test.mysql.root.password} -e "CREATE DATABASE test"</postStart>-->
+										<postStart>mysql -h localhost -p3306 -u${test.mysql.root.username} -p${test.mysql.root.password} -e "SELECT 1"</postStart>
+									</exec>
+								</wait>
+								<!--<volumes>/${project.build.directory}:/tmp/import:ro</volumes>-->
 							</run>
 						</image>
 					</images>
