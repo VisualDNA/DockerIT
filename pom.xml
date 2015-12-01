@@ -84,7 +84,7 @@
 								<wait>
 									<time>10000</time>
 									<exec>
-										<postStart>ls -la /tmp/import/create-database.sh</postStart>
+										<postStart>sh /tmp/import/create-database.sh</postStart>
 									</exec>
 								</wait>
 								<volumes>
