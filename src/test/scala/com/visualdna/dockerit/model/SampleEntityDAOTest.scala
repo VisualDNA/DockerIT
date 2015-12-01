@@ -14,8 +14,7 @@ class SampleEntityDAOTest extends path.FunSpec with Matchers with MockitoSugar w
   val db = getTestDb(new Properties())
 
   describe("SampleEntityDAO") {
-    DBIO.seq(
-    )
+    val setup = DBIO.seq(SampleEntityDAO.sampleEntityTable.schema.create)
 
     val dao = new SampleEntityDAO(db)
     it("should be able to connect to the database") {

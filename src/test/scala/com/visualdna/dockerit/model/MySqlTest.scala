@@ -37,7 +37,7 @@ trait MySqlTest {
          |    password = ""
          |    url = "jdbc:mysql://$host:$port/$dbName"
          |  }
-         |  numThreads = 10}
+         |  numThreads = 10
          |}
        """.stripMargin))
     )
