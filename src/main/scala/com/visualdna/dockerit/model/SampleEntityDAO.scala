@@ -5,12 +5,16 @@ import slick.jdbc.JdbcBackend
 
 
 class SampleEntityDAO(db: JdbcBackend.Database) {
-  val sampleEntityTable = TableQuery[SampleEntityTable]
+  import SampleEntityDAO._
 
   def save(firstAttribute: String, secondAttribute: String) = {
     sampleEntityTable.map(e => (e.firstAttribute, e.secondAttribute )) += (firstAttribute, secondAttribute)
   }
 
+}
+
+object SampleEntityDAO {
+  val sampleEntityTable = TableQuery[SampleEntityTable]
 }
 
 class SampleEntityTable(tag: Tag) extends Table[SampleEntity](tag, "sample_entity") {
