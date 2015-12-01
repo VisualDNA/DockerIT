@@ -50,13 +50,11 @@
 				<version>0.13.6</version>
 
 				<configuration>
-					....
 					<images>
 						<!-- A single's image configuration -->
 						<image>
-							....
+							mysql
 						</image>
-						....
 					</images>
 				</configuration>
 
@@ -70,7 +68,7 @@
 						<goals>
 							<!-- "build" should be used to create the images with the
                                  artefacts -->
-							<goal>build</goal>
+							<!--<goal>build</goal>-->
 							<goal>start</goal>
 						</goals>
 					</execution>
