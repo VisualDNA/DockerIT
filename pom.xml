@@ -10,8 +10,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
-		<scala.version>2.11.2</scala.version>
+		<scala.version>2.11.7</scala.version>
 		<scala.version.tools>2.11</scala.version.tools>
+		<slick.version>3.1.0</slick.version>
 	</properties>
 
 	<build>
@@ -50,6 +51,22 @@
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
 			<version>${scala.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.typesafe.slick</groupId>
+			<artifactId>slick_${scala.version.tools}</artifactId>
+			<version>${slick.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.typesafe.slick</groupId>
+			<artifactId>slick-hikaricp_${scala.version.tools}</artifactId>
+			<version>${slick.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
