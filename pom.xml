@@ -24,12 +24,13 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-
-			<resource>
+		</resources>
+		<testResources>
+			<testResource>
 				<directory>src/test/resources</directory>
 				<filtering>true</filtering>
-			</resource>
-		</resources>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -80,14 +81,15 @@
 									<port>${test.mysql.port}:3306</port>
 								</ports>
 								<wait>
-									<log>socket: '/var/run/mysqld/mysqld.sock'</log>
+									<!--<log>socket: '/var/run/mysqld/mysqld.sock'</log>-->
+									<time>10000</time>
 									<exec>
 										<postStart>sh /tmp/import/create-database.sh /tmp/import/input.sql</postStart>
 									</exec>
 								</wait>
 								<volumes>
 									<bind>
-										<volume>${project.build.outputDirectory}/db-scripts:/tmp/import:ro</volume>
+										<volume>${project.build.testOutputDirectory}/db-scripts:/tmp/import:ro</volume>
 									</bind>
 								</volumes>
 								<log>

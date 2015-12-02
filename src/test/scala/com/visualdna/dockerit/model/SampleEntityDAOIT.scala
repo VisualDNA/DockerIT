@@ -1,5 +1,7 @@
 package com.visualdna.dockerit.model
 
+import java.io.BufferedReader
+import java.net.URL
 import java.util.Properties
 
 import org.junit.runner.RunWith
@@ -14,7 +16,14 @@ import scala.concurrent.{Await, Future}
 @RunWith(classOf[JUnitRunner])
 class SampleEntityDAOIT extends FunSpec with Matchers with MockitoSugar with MySqlTest {
 
-  val db = getTestDb(new Properties())
+
+  private val resource: URL = getClass().getResource("/config.properties")
+  private val reader: BufferedReader = io.Source.fromURL(resource).bufferedReader()
+  private val properties: Properties = new Properties()
+  properties.load(reader)
+  println(properties.toString)
+
+  val db = getTestDb(properties)
 
   describe("SampleEntityDAO") {
 
