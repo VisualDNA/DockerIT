@@ -21,7 +21,6 @@ class SampleEntityDAOIT extends FunSpec with Matchers with MockitoSugar with MyS
   private val reader: BufferedReader = io.Source.fromURL(resource).bufferedReader()
   private val properties: Properties = new Properties()
   properties.load(reader)
-  println(properties.toString)
 
   val db = getTestDb(properties)
 
