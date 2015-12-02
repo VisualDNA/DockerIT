@@ -33,12 +33,12 @@ class SampleEntityDAOIT extends FunSpec with Matchers with MockitoSugar with MyS
       println("inside it")
 
       val res = for {
-        _ <- dao.save("scala", "rocks")
-        _ <- dao.save("scala", "I told you it rocks")
-        _ <- dao.save("javascript", "Mmmm... Seriously?")
+        _ <- dao.save("javascript", "rocks")
+        _ <- dao.save("javascript", "I told you it rocks")
+        _ <- dao.save("java", "Hmmm... Seriously?")
       } yield {}
 
-      val futureResult: Future[Seq[SampleEntity]] = res.flatMap( _ => dao.read("scala"))
+      val futureResult: Future[Seq[SampleEntity]] = res.flatMap( _ => dao.read("javascript"))
 
       Await.result(futureResult, 5 minutes) match {
         case result => result.size shouldBe 2
