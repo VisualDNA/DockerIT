@@ -172,4 +172,22 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>mac</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<test.mysql.host>192.168.99.100</test.mysql.host>
+			</properties>
+		</profile>
+		<profile>
+			<id>linux</id>
+			<properties>
+				<test.mysql.host>localhost</test.mysql.host>
+			</properties>
+		</profile>
+	</profiles>
 </project>
