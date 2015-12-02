@@ -66,8 +66,6 @@
 				<version>0.13.6</version>
 
 				<configuration>
-					<dockerHost>${env.DOCKER_HOST}</dockerHost>
-					<certPath>${env.DOCKER_CERT_PATH}</certPath>
 					<useColor>true</useColor>
 					<verbose>true</verbose>
 					<images>
