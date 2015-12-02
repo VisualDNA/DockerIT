@@ -119,25 +119,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.10</version>
-                <executions>
-                    <execution>
-                        <id>regex-property</id>
-                        <goals>
-                            <goal>regex-property</goal>
-                        </goals>
-                        <configuration>
-                            <name>my.docker.host</name>
-                            <value>${env.DOCKER_HOST}</value>
-                            <regex>\w+:\/\/(.*):\d+</regex>
-                            <replacement>$1</replacement>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.19</version>
@@ -202,6 +183,29 @@
     <profiles>
         <profile>
             <id>mac</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>1.10</version>
+                        <executions>
+                            <execution>
+                                <id>regex-property</id>
+                                <goals>
+                                    <goal>regex-property</goal>
+                                </goals>
+                                <configuration>
+                                    <name>my.docker.host</name>
+                                    <value>${env.DOCKER_HOST}</value>
+                                    <regex>\w+:\/\/(.*):\d+</regex>
+                                    <replacement>$1</replacement>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
