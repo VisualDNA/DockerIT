@@ -82,7 +82,7 @@
 								<wait>
 									<log>socket: '/var/run/mysqld/mysqld.sock'</log>
 									<exec>
-										<postStart>sh /tmp/import/create-database.sh</postStart>
+										<postStart>sh /tmp/import/create-database.sh /tmp/import/input.sql</postStart>
 									</exec>
 								</wait>
 								<volumes>
