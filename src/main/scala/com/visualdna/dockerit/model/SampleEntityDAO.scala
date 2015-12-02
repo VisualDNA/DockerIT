@@ -8,10 +8,10 @@ class SampleEntityDAO(db: JdbcBackend.Database) {
   import SampleEntityDAO._
 
   def save(firstAttribute: String, secondAttribute: String) =
-    sampleEntityTable.map(e => (e.firstAttribute, e.secondAttribute )) += (firstAttribute, secondAttribute)
+    db.run(sampleEntityTable.map(e => (e.firstAttribute, e.secondAttribute )) += (firstAttribute, secondAttribute))
 
   def read(firstAttribute: String) =
-    sampleEntityTable.filter(_.firstAttribute === firstAttribute).result
+    db.run(sampleEntityTable.filter(_.firstAttribute === firstAttribute).result)
 
 }
 
