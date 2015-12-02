@@ -34,7 +34,7 @@ trait MySqlTest {
          |  dataSourceClass = "com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource"
          |  properties = {
          |    user = "root"
-         |    password = ""
+         |    password = "admin"
          |    url = "jdbc:mysql://$host:$port/$dbName"
          |  }
          |  numThreads = 10
