@@ -81,8 +81,6 @@
 									<port>${test.mysql.port}:3306</port>
 								</ports>
 								<wait>
-									<!--<log>socket: '/var/run/mysqld/mysqld.sock'</log>-->
-									<time>10000</time>
 									<exec>
 										<postStart>sh /tmp/import/create-database.sh /tmp/import/input.sql</postStart>
 									</exec>
@@ -92,10 +90,6 @@
 										<volume>${project.build.testOutputDirectory}/db-scripts:/tmp/import:ro</volume>
 									</bind>
 								</volumes>
-								<log>
-									<prefix>CONTAINER</prefix>
-									<color>CYAN</color>
-								</log>
 							</run>
 						</image>
 					</images>
