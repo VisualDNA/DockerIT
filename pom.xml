@@ -118,6 +118,25 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.10</version>
+				<executions>
+					<execution>
+						<id>regex-property</id>
+						<goals>
+							<goal>regex-property</goal>
+						</goals>
+						<configuration>
+							<name>my.docker.host</name>
+							<value>${env.DOCKER_HOST}</value>
+							<regex>\w+:\/\/(.*):\d+</regex>
+							<replacement>$1</replacement>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.19</version>
@@ -186,7 +205,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<test.mysql.host>192.168.99.100</test.mysql.host>
+				<test.mysql.host>${my.docker.host}</test.mysql.host>
 			</properties>
 		</profile>
 		<profile>
