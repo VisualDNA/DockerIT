@@ -82,7 +82,7 @@
 									<port>${test.mysql.port}:3306</port>
 								</ports>
 								<wait>
-									<time>10000</time>
+									<time>30000</time>
 									<exec>
 										<postStart>sh /tmp/import/create-database.sh</postStart>
 									</exec>
