@@ -69,6 +69,7 @@
 				<configuration>
 					<useColor>true</useColor>
 					<verbose>true</verbose>
+					<removeVolumes>true</removeVolumes>
 					<images>
 						<!-- A single's image configuration -->
 						<image>
